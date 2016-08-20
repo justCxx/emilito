@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :workspaces do
         resources :tickets, except: [:new, :edit]
         resources :users
+        resources :webhooks
       end
     end
   end
