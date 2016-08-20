@@ -47,5 +47,54 @@ describe Webhook::Update do
         expect(op.model.workspace_id).to eq webhook.workspace_id
       end
     end
+
+    context 'when :add_events param is passed' do
+      let(:webhook_params) { { id: webhook.id, add_events: ['update'] } }
+
+      it 'merge events with exists events' do
+        res, op = subject
+        expect(res).to be, -> { op.contract.errors.messages }
+        expect(op.model.events).to eq ['create', 'update']
+      end
+    end
+
+    context 'when :remove_events param is passed' do
+      let(:webhook_params) { { id: webhook.id, remove_events: ['create'] } }
+
+      it 'merge events with exists events' do
+        res, op = subject
+        expect(res).to be, -> { op.contract.errors.messages }
+        expect(op.model.events).to eq []
+      end
+    end
+
+    context 'when :add_events and :remove_events params is passed' do
+      let(:webhook_params) do
+        { id: webhook.id,
+          add_events: ['update', 'delete'],
+          remove_events: ['create', 'update'] }
+      end
+
+      it 'merge events with exists events' do
+        res, op = subject
+        expect(res).to be, -> { op.contract.errors.messages }
+        expect(op.model.events).to eq ['delete']
+      end
+    end
+
+    context 'when :events, :add_events and :remove_events params is passed' do
+      let(:webhook_params) do
+        { id: webhook.id,
+          events: ['create', 'liked'],
+          add_events: ['update', 'delete'],
+          remove_events: ['create', 'update'] }
+      end
+
+      it 'merge events with exists events' do
+        res, op = subject
+        expect(res).to be, -> { op.contract.errors.messages }
+        expect(op.model.events).to eq ['liked', 'delete']
+      end
+    end
   end
 end
