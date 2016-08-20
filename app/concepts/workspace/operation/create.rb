@@ -3,7 +3,7 @@ class Workspace
     include Model
     model Workspace, :create
 
-    contract Workspace::Contract::Base
+    contract Workspace::Contract::Create
 
     extend  Trailblazer::Operation::Representer::DSL
     include Trailblazer::Operation::Representer::Rendering
