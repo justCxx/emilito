@@ -56,6 +56,7 @@ group :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'faker', require: false
+  gem 'poltergeist'
   gem 'rspec'
   gem 'rspec-rails'
   gem 'simplecov'
