@@ -44,9 +44,12 @@ RSpec.feature 'Feature::Session', type: :feature do
     it_behaves_like 'not logged user'
   end
 
-  context 'when signed user click to Sign out' do
+  context 'when signed user click to Sign out', js: true do
     include_context 'user signed in'
-    before { click_on I18n.t(:sign_out) }
+    before do
+      click_on 'dropdownMenuButton'
+      click_on I18n.t(:sign_out)
+    end
     it_behaves_like 'not logged user'
   end
 end
