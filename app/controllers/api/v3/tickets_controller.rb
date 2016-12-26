@@ -1,6 +1,8 @@
 module Api
   module V3
     class TicketsController < Api::V3::ApplicationController
+      before_action :wrap_relationship_params!
+
       def index
         respond Ticket::Index
       end
@@ -25,6 +27,12 @@ module Api
 
       def workspace
         @workspace ||= Workspace.find(params[:workspace_id])
+      end
+
+      private
+
+      def wrap_relationship_params!
+        params[:ticket]&.merge!(params.slice(:workspace_id))
       end
     end
   end
