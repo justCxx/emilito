@@ -1,1 +1,26 @@
-= t(:hello_world)
+#app
+  reverse-app
+
+script src="https://unpkg.com/vue/dist/vue.js"
+
+javascript:
+  (function () {
+    window.Vue.component('reverse-app', {
+      data: function () {
+        return {message: 'Hello, Emilito!'};
+      },
+      template: `
+        <div>
+          <p>{{message}}</p>
+          <button class="btn btn-primary" v-on:click="reverse">Reverse message</button>
+        </div>
+      `,
+      methods: {
+        reverse: function () {
+          this.message = this.message.split('').reverse().join('')
+        }
+      }
+    });
+
+    new window.Vue({el: '#app'});
+  })();
