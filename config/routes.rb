@@ -13,6 +13,12 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :web_auth, path: :auth do
+    scope controller: :authentication do
+      post :user_auth
+    end
+  end
+
   scope module: :web do
     scope controller: :sessions do
       get    '/sign_in',  action: :new
