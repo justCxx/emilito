@@ -1,6 +1,8 @@
 module Api
   module V3
     class TicketsController < Api::V3::ApplicationController
+      before_action :wrap_relationship_params!
+
       def index
         endpoint Ticket::Index
       end
@@ -19,6 +21,12 @@ module Api
 
       def destroy
         endpoint Ticket::Delete
+      end
+
+      private
+
+      def wrap_relationship_params!
+        params[:ticket]&.merge!(params.slice(:workspace_id))
       end
     end
   end
