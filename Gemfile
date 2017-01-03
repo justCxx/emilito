@@ -23,6 +23,7 @@ gem 'dry-validation'
 gem 'reform'
 gem 'representable'
 gem 'responders'
+gem 'shrine'
 gem 'trailblazer', '~> 2.0'
 gem 'trailblazer-cells'
 gem 'trailblazer-endpoint', git: 'https://github.com/trailblazer/trailblazer-endpoint.git'
@@ -66,6 +67,7 @@ group :test do
   gem 'rspec-power_assert'
   gem 'rspec-rails'
   gem 'selenium-webdriver'
+  gem 'shrine-memory'
   gem 'simplecov'
 end
 

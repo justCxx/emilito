@@ -34,6 +34,8 @@ en:
         pick_a_username: "Pick a username"
         your_email_address: "Your email address"
         create_a_password: "Create a password"
+    uploaders:
+      max_file_size_mb: "is too large (max is %{max} MB)"
 
   errors:
     rules:
