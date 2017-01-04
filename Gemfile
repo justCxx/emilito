@@ -8,6 +8,11 @@ gem 'rails', '~> 5.0.0'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
 
+gem 'redis'
+gem 'redis-namespace'
+gem 'sidekiq'
+gem 'sinatra', '~> 2.0.0.beta2', require: false
+
 gem 'dotenv-rails'
 gem 'rollbar'
 
@@ -20,6 +25,7 @@ gem 'dry-container'
 gem 'dry-matcher', '0.5'
 gem 'dry-types'
 gem 'dry-validation'
+gem 'faraday'
 gem 'reform'
 gem 'representable'
 gem 'responders'
@@ -27,6 +33,7 @@ gem 'trailblazer', '~> 2.0'
 gem 'trailblazer-cells'
 gem 'trailblazer-endpoint', git: 'https://github.com/trailblazer/trailblazer-endpoint.git'
 gem 'trailblazer-rails'
+gem 'wisper', '~> 2.0.0.rc1'
 
 # === Frontend ===
 gem 'bootstrap', '4.0.0.alpha4'
@@ -65,8 +72,10 @@ group :test do
   gem 'rspec'
   gem 'rspec-power_assert'
   gem 'rspec-rails'
+  gem 'rspec-sidekiq'
   gem 'selenium-webdriver'
   gem 'simplecov'
+  gem 'webmock'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

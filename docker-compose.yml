@@ -31,6 +31,20 @@ services:
       - db
       - redis
 
+  sidekiq:
+    tty: true
+    stdin_open: true
+    build: .
+    command: bundle exec sidekiq
+    environment:
+      - EMILITO_DATABASE_HOST=db
+    volumes:
+      - .:/emilito
+      - bundle:/bundle
+    depends_on:
+      - db
+      - redis
+
 volumes:
   bundle:
   postgres:

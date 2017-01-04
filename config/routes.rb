@@ -13,6 +13,13 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :admin do
+    namespace :services do
+      require 'sidekiq/web'
+      mount Sidekiq::Web => '/sidekiq'
+    end
+  end
+
   scope module: :web do
     scope controller: :sessions do
       get    '/sign_in',  action: :new

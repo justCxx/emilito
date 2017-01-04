@@ -19,6 +19,9 @@ end
 
 Capybara.javascript_driver = :poltergeist
 
+require 'sidekiq_helper'
+require 'webmock_helper'
+
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
